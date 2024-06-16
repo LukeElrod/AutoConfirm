@@ -33,7 +33,7 @@ local deleteFillButton = CreateFrame("CheckButton", nil, scrollFrame, "Interface
 deleteFillButton:SetPoint("TOPLEFT", 0, -60)
 deleteFillButton.Text:SetText("Auto Type Delete")
 deleteFillButton:SetScript("OnClick", function ()
-    RazVars.confirmLootRoll = lootRollButton:GetChecked()
+    RazVars.deleteGoodItem = deleteFillButton:GetChecked()
 end)
 
 local removeGlyphButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")

@@ -32,12 +32,6 @@ local function PopupHook(self)
         C_Timer.After(0.05, function()
             self.button1:Click()
         end)
-    elseif self.which == "DELETE_GOOD_ITEM" and RazVars.deleteGoodItem then
-        local editBox = _G[self.button1:GetName() .. "EditBox"]
-        if editBox then
-            editBox:SetText("DELETE")
-            editBox:HighlightText()
-        end
     elseif self.which == "CONFIRM_REMOVE_GLYPH" and RazVars.removeGlyph then
         C_Timer.After(0.05, function()
             self.button1:Click()
@@ -114,3 +108,20 @@ local function PopupHook(self)
 end
 
 hooksecurefunc("StaticPopup_OnShow", PopupHook)
+
+local function SpecialHandler(self, event, ...)
+    if event == "DELETE_ITEM_CONFIRM" and RazVars.deleteGoodItem then
+        local dialog = StaticPopup1
+        if dialog and dialog:IsVisible() then
+            local editBox = _G[dialog:GetName() .. "EditBox"]
+            if editBox then
+                editBox:SetText("delete")
+                editBox:HighlightText()
+            end
+        end
+    end
+end
+
+local eventFrame = CreateFrame("EventFrame")
+eventFrame:RegisterEvent("DELETE_ITEM_CONFIRM")
+eventFrame:SetScript("OnEvent", SpecialHandler)
