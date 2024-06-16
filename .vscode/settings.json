@@ -1,0 +1,17 @@
+{
+    "Lua.diagnostics.globals": [
+        "StaticPopup1",
+        "DELETE_GOOD_ITEM",
+        "InterfaceOptions_AddCategory",
+        "SlashCmdList",
+        "hash_SlashCmdList",
+        "DEFAULT_CHAT_FRAME",
+        "NORMAL_FONT_COLOR_CODE",
+        "FONT_COLOR_CODE_CLOSE",
+        "SELECTED_CHAT_FRAME",
+        "NORMAL_FONT_COLOR",
+        "ACCEPT",
+        "CANCEL",
+        "Settings"
+    ]
+}

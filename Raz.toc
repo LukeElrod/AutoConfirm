@@ -1,0 +1,9 @@
+## Interface: 40400
+## Title: Raz
+## Notes: Auto-confirm QOL Addon.
+## Author: Razoon
+## Version: 1.0
+## SavedVariables: RazVars
+
+Core.lua
+Options.lua
