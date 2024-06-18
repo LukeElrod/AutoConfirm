@@ -3,7 +3,7 @@
 ## Notes: Auto-confirm QOL Addon.
 ## Author: Razoon
 ## Version: 1.0
-## SavedVariables: RazVars
+## SavedVariables: AutoConfirmationSettings
 
 Core.lua
 Options.lua

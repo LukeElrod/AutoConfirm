@@ -15,175 +15,49 @@ local title = scrollChild:CreateFontString("ARTWORK", nil, "GameFontNormalLarge"
 title:SetPoint("TOP")
 title:SetText("Auto Confirmations")
 
-local abandonButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-abandonButton:SetPoint("TOPLEFT", 0, -20)
-abandonButton.Text:SetText("Abandon Quest")
-abandonButton:SetScript("OnClick", function ()
-    RazVars.abandonQuest = abandonButton:GetChecked()
-end)
+local function CreateCheckButton(parent, yOffset, text, variable)
+    local button = CreateFrame("CheckButton", nil, parent, "InterfaceOptionsCheckButtonTemplate")
+    button:SetPoint("TOPLEFT", 0, yOffset)
+    button.Text:SetText(text)
+    button:SetScript("OnClick", function()
+        AutoConfirmationSettings[variable] = button:GetChecked()
+    end)
+    return button
+end
 
-local lootRollButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-lootRollButton:SetPoint("TOPLEFT", 0, -40)
-lootRollButton.Text:SetText("Loot Roll")
-lootRollButton:SetScript("OnClick", function ()
-    RazVars.confirmLootRoll = lootRollButton:GetChecked()
-end)
+local checkButtons = {
+    {text = "Abandon Quest", variable = "abandonQuest"},
+    {text = "Loot Roll", variable = "confirmLootRoll"},
+    {text = "Auto Type Delete", variable = "autoDeleteItem"},
+    {text = "Remove Glyph", variable = "removeGlyph"},
+    {text = "Confirm Glyph", variable = "confirmGlyphPlacement"},
+    {text = "Reforge", variable = "confirmItemReforge"},
+    {text = "Master Loot", variable = "confirmLootDistribution"},
+    {text = "Battlefield Entry", variable = "confirmBattlefieldEntry"},
+    {text = "Delete Mail", variable = "deleteMailAutomatically"},
+    {text = "Death", variable = "releaseSpirit"},
+    {text = "Resurrect", variable = "acceptResurrect"},
+    {text = "acceptTrade", variable = "acceptTrade"},
+    {text = "Loot Bind", variable = "confirmLootBind"},
+    {text = "Equip Bind", variable = "confirmEquipBind"},
+    {text = "Use Bind", variable = "confirmUseBind"},
+    {text = "Shared Quest", variable = "acceptSharedQuest"},
+    {text = "Enchant Bind", variable = "confirmEnchantBind"},
+    {text = "Replace Enchant", variable = "confirmReplaceEnchant"},
+    {text = "Leave Instance", variable = "confirmLeaveInstance"},
+    {text = "Leave Battlefield", variable = "confirmLeaveBattlefield"},
+    {text = "Surrender Arena", variable = "confirmSurrenderArena"}
+}
 
-local deleteFillButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-deleteFillButton:SetPoint("TOPLEFT", 0, -60)
-deleteFillButton.Text:SetText("Auto Type Delete")
-deleteFillButton:SetScript("OnClick", function ()
-    RazVars.deleteGoodItem = deleteFillButton:GetChecked()
-end)
+for i, buttonInfo in ipairs(checkButtons) do
+    local yOffset = -20 * i
+    buttonInfo.button = CreateCheckButton(scrollChild, yOffset, buttonInfo.text, buttonInfo.variable)
+end
 
-local removeGlyphButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-removeGlyphButton:SetPoint("TOPLEFT", 0, -80)
-removeGlyphButton.Text:SetText("Remove Glyph")
-removeGlyphButton:SetScript("OnClick", function ()
-    RazVars.removeGlyph = removeGlyphButton:GetChecked()
-end)
-
-local confirmGlyphButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-confirmGlyphButton:SetPoint("TOPLEFT", 0, -100)
-confirmGlyphButton.Text:SetText("Confirm Glyph")
-confirmGlyphButton:SetScript("OnClick", function ()
-    RazVars.placeGlyph = confirmGlyphButton:GetChecked()
-end)
-
-local reforgeButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-reforgeButton:SetPoint("TOPLEFT", 0, -120)
-reforgeButton.Text:SetText("Reforge")
-reforgeButton:SetScript("OnClick", function ()
-    RazVars.reforgeItem = reforgeButton:GetChecked()
-end)
-
-local masterLootButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-masterLootButton:SetPoint("TOPLEFT", 0, -140)
-masterLootButton.Text:SetText("Master Loot")
-masterLootButton:SetScript("OnClick", function ()
-    RazVars.masterLoot = masterLootButton:GetChecked()
-end)
-
-local bfEntryButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-bfEntryButton:SetPoint("TOPLEFT", 0, -160)
-bfEntryButton.Text:SetText("Battlefield Entry")
-bfEntryButton:SetScript("OnClick", function ()
-    RazVars.bfEntry = bfEntryButton:GetChecked()
-end)
-
-local deleteMailButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-deleteMailButton:SetPoint("TOPLEFT", 0, -180)
-deleteMailButton.Text:SetText("Delete Mail")
-deleteMailButton:SetScript("OnClick", function ()
-    RazVars.deleteMail = deleteMailButton:GetChecked()
-end)
-
-local deathButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-deathButton:SetPoint("TOPLEFT", 0, -200)
-deathButton.Text:SetText("Death")
-deathButton:SetScript("OnClick", function ()
-    RazVars.releaseSpirit = deathButton:GetChecked()
-end)
-
-local ressurectButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-ressurectButton:SetPoint("TOPLEFT", 0, -220)
-ressurectButton.Text:SetText("Resurrect")
-ressurectButton:SetScript("OnClick", function ()
-    RazVars.ressurect = ressurectButton:GetChecked()
-end)
-
-local tradeButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-tradeButton:SetPoint("TOPLEFT", 0, -240)
-tradeButton.Text:SetText("Trade")
-tradeButton:SetScript("OnClick", function ()
-    RazVars.trade = tradeButton:GetChecked()
-end)
-
-local lootBindButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-lootBindButton:SetPoint("TOPLEFT", 0, -260)
-lootBindButton.Text:SetText("Loot Bind")
-lootBindButton:SetScript("OnClick", function ()
-    RazVars.lootBind = lootBindButton:GetChecked()
-end)
-
-local equipBindButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-equipBindButton:SetPoint("TOPLEFT", 0, -280)
-equipBindButton.Text:SetText("Equip Bind")
-equipBindButton:SetScript("OnClick", function ()
-    RazVars.equipBind = equipBindButton:GetChecked()
-end)
-
-local useBindButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-useBindButton:SetPoint("TOPLEFT", 0, -300)
-useBindButton.Text:SetText("Use Bind")
-useBindButton:SetScript("OnClick", function ()
-    RazVars.useBind = useBindButton:GetChecked()
-end)
-
-local sharedQuestButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-sharedQuestButton:SetPoint("TOPLEFT", 0, -320)
-sharedQuestButton.Text:SetText("Shared Quest")
-sharedQuestButton:SetScript("OnClick", function ()
-    RazVars.sharedQuest = sharedQuestButton:GetChecked()
-end)
-
-local enchantBindButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-enchantBindButton:SetPoint("TOPLEFT", 0, -340)
-enchantBindButton.Text:SetText("Enchant Bind")
-enchantBindButton:SetScript("OnClick", function ()
-    RazVars.enchantBind = enchantBindButton:GetChecked()
-end)
-
-local replaceEnchantButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-replaceEnchantButton:SetPoint("TOPLEFT", 0, -360)
-replaceEnchantButton.Text:SetText("Replace Enchant")
-replaceEnchantButton:SetScript("OnClick", function ()
-    RazVars.replaceEnchant = replaceEnchantButton:GetChecked()
-end)
-
-local leaveInstanceButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-leaveInstanceButton:SetPoint("TOPLEFT", 0, -380)
-leaveInstanceButton.Text:SetText("Leave Instance")
-leaveInstanceButton:SetScript("OnClick", function ()
-    RazVars.leaveInstance = leaveInstanceButton:GetChecked()
-end)
-
-local leaveBfButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-leaveBfButton:SetPoint("TOPLEFT", 0, -400)
-leaveBfButton.Text:SetText("Leave Battlefield")
-leaveBfButton:SetScript("OnClick", function ()
-    RazVars.leaveBf = leaveBfButton:GetChecked()
-end)
-
-local surrenderArenaButton = CreateFrame("CheckButton", nil, scrollFrame, "InterfaceOptionsCheckButtonTemplate")
-surrenderArenaButton:SetPoint("TOPLEFT", 0, -420)
-surrenderArenaButton.Text:SetText("Surrender Arena")
-surrenderArenaButton:SetScript("OnClick", function ()
-    RazVars.surrenderArena = surrenderArenaButton:GetChecked()
-end)
-
-local function InitOptions(self)
-    abandonButton:SetChecked(RazVars.abandonQuest)
-    lootRollButton:SetChecked(RazVars.confirmLootRoll)
-    deleteFillButton:SetChecked(RazVars.deleteGoodItem)
-    removeGlyphButton:SetChecked(RazVars.removeGlyph)
-    confirmGlyphButton:SetChecked(RazVars.placeGlyph)
-    reforgeButton:SetChecked(RazVars.reforgeItem)
-    masterLootButton:SetChecked(RazVars.masterLoot)
-    bfEntryButton:SetChecked(RazVars.bfEntry)
-    deleteMailButton:SetChecked(RazVars.deleteMail)
-    deathButton:SetChecked(RazVars.releaseSpirit)
-    ressurectButton:SetChecked(RazVars.ressurect)
-    tradeButton:SetChecked(RazVars.trade)
-    lootBindButton:SetChecked(RazVars.lootBind)
-    equipBindButton:SetChecked(RazVars.equipBind)
-    useBindButton:SetChecked(RazVars.useBind)
-    sharedQuestButton:SetChecked(RazVars.sharedQuest)
-    enchantBindButton:SetChecked(RazVars.enchantBind)
-    replaceEnchantButton:SetChecked(RazVars.replaceEnchant)
-    leaveInstanceButton:SetChecked(RazVars.leaveInstance)
-    leaveBfButton:SetChecked(RazVars.leaveBf)
-    surrenderArenaButton:SetChecked(RazVars.surrenderArena)
+local function InitOptions()
+    for _, buttonInfo in ipairs(checkButtons) do
+        buttonInfo.button:SetChecked(AutoConfirmationSettings[buttonInfo.variable])
+    end
 end
 
 panel:SetScript("OnShow", InitOptions)

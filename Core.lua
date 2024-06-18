@@ -1,127 +1,71 @@
-RazVars =
-{
+AutoConfirmationSettings = {
     abandonQuest = false,
     confirmLootRoll = false,
-    deleteGoodItem = false,
+    autoDeleteItem = false,
     removeGlyph = false,
-    placeGlyph = false,
-    reforgeItem = false,
-    masterLoot = false,
-    bfEntry = false,
-    deleteMail = false,
+    confirmGlyphPlacement = false,
+    confirmItemReforge = false,
+    confirmLootDistribution = false,
+    confirmBattlefieldEntry = false,
+    deleteMailAutomatically = false,
     releaseSpirit = false,
-    ressurect = false,
-    trade = false,
-    lootBind = false,
-    equipBind = false,
-    useBind = false,
-    sharedQuest = false,
-    enchantBind = false,
-    replaceEnchant = false,
-    leaveInstance = false,
-    leaveBf = false,
-    surrenderArena = false
+    acceptResurrect = false,
+    acceptTrade = false,
+    confirmLootBind = false,
+    confirmEquipBind = false,
+    confirmUseBind = false,
+    acceptSharedQuest = false,
+    confirmEnchantBind = false,
+    confirmReplaceEnchant = false,
+    confirmLeaveInstance = false,
+    confirmLeaveBattlefield = false,
+    confirmSurrenderArena = false
 }
 
 local function PopupHook(self)
-    if self.which == "ABANDON_QUEST" and RazVars.abandonQuest then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "CONFIRM_LOOT_ROLL" and RazVars.confirmLootRoll then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "CONFIRM_REMOVE_GLYPH" and RazVars.removeGlyph then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "CONFIRM_GLYPH_PLACEMENT" and RazVars.placeGlyph then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "CONFIRM_UPGRADE_ITEM" and RazVars.reforgeItem then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "CONFIRM_LOOT_DISTRIBUTION" and RazVars.masterLoot then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "CONFIRM_BATTLEFIELD_ENTRY" and RazVars.bfEntry then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "DELETE_MAIL" and RazVars.deleteMail then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "DEATH" and RazVars.releaseSpirit then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "RESURRECT" and RazVars.ressurect then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "TRADE" and RazVars.trade then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "LOOT_BIND" and RazVars.lootBind then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "EQUIP_BIND" and RazVars.equipBind then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "USE_BIND" and RazVars.useBind then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "QUEST_ACCEPT" and RazVars.sharedQuest then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "BIND_ENCHANT" and RazVars.enchantBind then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "REPLACE_ENCHANT" and RazVars.replaceEnchant then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "CONFIRM_LEAVE_INSTANCE_PARTY" and RazVars.leaveInstance then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "CONFIRM_LEAVE_BATTLEFIELD" and RazVars.leaveBf then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
-    elseif self.which == "CONFIRM_SURRENDER_ARENA" and RazVars.surrenderArena then
-        C_Timer.After(0.05, function()
-            self.button1:Click()
-        end)
+    if (self.which == "ABANDON_QUEST" or self.which == "ABANDON_QUEST_WITH_ITEMS") and AutoConfirmationSettings.abandonQuest then
+        self.button1:Click()
+    elseif self.which == "CONFIRM_LOOT_ROLL" and AutoConfirmationSettings.confirmLootRoll then
+        self.button1:Click()
+    elseif self.which == "DELETE_GOOD_ITEM" and AutoConfirmationSettings.autoDeleteItem then
+        self.editBox:SetText("delete")
+    elseif self.which == "CONFIRM_REMOVE_GLYPH" and AutoConfirmationSettings.removeGlyph then
+        self.button1:Click()
+    elseif self.which == "CONFIRM_GLYPH_PLACEMENT" and AutoConfirmationSettings.confirmGlyphPlacement then
+        self.button1:Click()
+    elseif self.which == "CONFIRM_UPGRADE_ITEM" and AutoConfirmationSettings.confirmItemReforge then
+        self.button1:Click()
+    elseif self.which == "CONFIRM_LOOT_DISTRIBUTION" and AutoConfirmationSettings.confirmLootDistribution then
+        self.button1:Click()
+    elseif self.which == "CONFIRM_BATTLEFIELD_ENTRY" and AutoConfirmationSettings.confirmBattlefieldEntry then
+        self.button1:Click()
+    elseif self.which == "DELETE_MAIL" and AutoConfirmationSettings.deleteMailAutomatically then
+        self.button1:Click()
+    elseif self.which == "DEATH" and AutoConfirmationSettings.releaseSpirit then
+        self.button1:Click()
+    elseif self.which == "RESURRECT" and AutoConfirmationSettings.acceptResurrect then
+        self.button1:Click()
+    elseif self.which == "acceptTrade" and AutoConfirmationSettings.acceptTrade then
+        self.button1:Click()
+    elseif self.which == "LOOT_BIND" and AutoConfirmationSettings.confirmLootBind then
+        self.button1:Click()
+    elseif self.which == "EQUIP_BIND" and AutoConfirmationSettings.confirmEquipBind then
+        self.button1:Click()
+    elseif self.which == "USE_BIND" and AutoConfirmationSettings.confirmUseBind then
+        self.button1:Click()
+    elseif self.which == "QUEST_ACCEPT" and AutoConfirmationSettings.acceptSharedQuest then
+        self.button1:Click()
+    elseif self.which == "BIND_ENCHANT" and AutoConfirmationSettings.confirmEnchantBind then
+        self.button1:Click()
+    elseif self.which == "REPLACE_ENCHANT" and AutoConfirmationSettings.confirmReplaceEnchant then
+        self.button1:Click()
+    elseif self.which == "CONFIRM_LEAVE_INSTANCE_PARTY" and AutoConfirmationSettings.confirmLeaveInstance then
+        self.button1:Click()
+    elseif self.which == "CONFIRM_LEAVE_BATTLEFIELD" and AutoConfirmationSettings.confirmLeaveBattlefield then
+        self.button1:Click()
+    elseif self.which == "CONFIRM_SURRENDER_ARENA" and AutoConfirmationSettings.confirmSurrenderArena then
+        self.button1:Click()
     end
 end
 
 hooksecurefunc("StaticPopup_OnShow", PopupHook)
-
-local function SpecialHandler(self, event, ...)
-    if event == "DELETE_ITEM_CONFIRM" and RazVars.deleteGoodItem then
-        local dialog = StaticPopup1
-        if dialog and dialog:IsVisible() then
-            local editBox = _G[dialog:GetName() .. "EditBox"]
-            if editBox then
-                editBox:SetText("delete")
-                editBox:HighlightText()
-            end
-        end
-    end
-end
-
-local eventFrame = CreateFrame("EventFrame")
-eventFrame:RegisterEvent("DELETE_ITEM_CONFIRM")
-eventFrame:SetScript("OnEvent", SpecialHandler)
