@@ -1,5 +1,5 @@
 local panel = CreateFrame("Frame")
-panel.name = "Raz"
+panel.name = "AutoConfirm"
 InterfaceOptions_AddCategory(panel)
 
 local scrollFrame = CreateFrame("ScrollFrame", nil, panel, "UIPanelScrollFrameTemplate")
@@ -61,3 +61,10 @@ local function InitOptions()
 end
 
 panel:SetScript("OnShow", InitOptions)
+
+SLASH_AUTOCONFIRM1, SLASH_AUTOCONFIRM2 = "/autoconfirm", "/ac"
+
+function SlashCmdList.AUTOCONFIRM(msg, editBox) -- 4.
+    InterfaceAddOnsList_Update()
+    InterfaceOptionsFrame_OpenToCategory(panel)
+end

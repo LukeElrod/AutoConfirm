@@ -12,6 +12,7 @@
         "NORMAL_FONT_COLOR",
         "ACCEPT",
         "CANCEL",
-        "Settings"
+        "Settings",
+        "InterfaceOptionsFrame_OpenToCategory"
     ]
 }

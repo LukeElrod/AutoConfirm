@@ -1,7 +1,7 @@
 ## Interface: 40400
-## Title: Raz
+## Title: Auto Confirm
 ## Notes: Auto-confirm QOL Addon.
-## Author: Razoon
+## Author: Luke E
 ## Version: 1.0
 ## SavedVariables: AutoConfirmationSettings
 
