@@ -50,16 +50,4 @@ For further assistance, please visit the [support page](https://www.curseforge.c
 
 ## Contributing
 
-Contributions are welcome! If you'd like to report a bug, request a feature, or submit a pull request, please visit our [GitHub repository](https://github.com/LukeElrod/AutoConfirm).
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For questions or feedback, please contact the addon author through [CurseForge](https://www.curseforge.com) or directly via GitHub.
-
----
-
-Thank you for using AutoConfirm! Enjoy a smoother and more efficient World of Warcraft experience.
+Contributions are welcome! If you'd like to report a bug, request a feature, or submit a pull request, please do so on this repository.
