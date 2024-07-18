@@ -2,13 +2,13 @@
 
 ## Overview
 
-**AutoConfirm** is a World of Warcraft addon designed to streamline your gameplay by providing in-game UI options for enabling automatic confirmations of certain static popups. These popups include actions like abandoning quests and rolling on bind-on-pickup loot.
+**AutoConfirm** is a World of Warcraft addon designed to streamline your gameplay by providing in-game UI options for enabling automatic confirmations of various static popups. These popups include actions like leaving battlefields, surrendering in arenas, and more, in addition to the previously supported actions like abandoning quests and rolling on bind-on-pickup loot.
 
 ## Features
 
-- **Auto Confirmations:** Automatically confirm annoying static popups such as quest abandonment or rolling on BoP loot.
-- **User-Friendly Interface:** Easy to use in-game settings menu for configuring auto-confirmations.
-- **Customizable Options:** Enable or disable auto-confirmations for specific actions based on your preferences.
+- **Extended Auto Confirmations:** Automatically confirm a wider range of annoying static popups, including leaving battlefields, surrendering arenas, and accepting trades, in addition to quest abandonment and rolling on BoP loot.
+- **User-Friendly Interface:** An easy-to-use in-game settings menu for configuring auto-confirmations.
+- **Customizable Options:** Enable or disable auto-confirmations for specific actions based on your preferences, with new options for battlefield and arena actions.
 
 ## Installation
 
@@ -28,7 +28,7 @@
    - Find and click on `AutoConfirm` to open the configuration panel.
 
 2. **Configuring AutoConfirm:**
-   - **Pick Your Confirmations:** Toggle the options to automatically confirm your seleted popups.
+   - **Pick Your Confirmations:** Toggle the options to automatically confirm your selected popups, including new options for battlefield and arena actions.
 
 3. **Saving Changes:** Your changes will be saved automatically. You can adjust these settings at any time.
 
@@ -45,9 +45,10 @@ If you encounter any issues, try the following steps:
 1. **Reload UI:** Type `/reload` in the chat to reload the user interface.
 2. **Check for Updates:** Ensure you have the latest version of AutoConfirm installed.
 3. **Disable Conflicting Addons:** Temporarily disable other addons to check for conflicts.
+4. **Review Global Settings:** Ensure that your global settings in `.vscode/settings.json` do not conflict with the addon's functionality.
 
 For further assistance, please visit the [support page](https://www.curseforge.com) on CurseForge.
 
 ## Contributing
 
-Contributions are welcome! If you'd like to report a bug, request a feature, or submit a pull request, please do so on this repository.
+Contributions are welcome! If you'd like to report a bug, request a feature, or submit a pull request, please do so on this repository. Your feedback helps make AutoConfirm better for everyone.
