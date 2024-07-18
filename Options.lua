@@ -27,26 +27,26 @@ end
 
 local checkButtons = {
     {text = "Abandon Quest", variable = "abandonQuest"},
-    {text = "Loot Roll", variable = "confirmLootRoll"},
+    {text = "Loot Roll", variable = "lootRoll"},
     {text = "Auto Type Delete", variable = "autoDeleteItem"},
     {text = "Remove Glyph", variable = "removeGlyph"},
-    {text = "Confirm Glyph", variable = "confirmGlyphPlacement"},
-    {text = "Reforge", variable = "confirmItemReforge"},
-    {text = "Master Loot", variable = "confirmLootDistribution"},
-    {text = "Battlefield Entry", variable = "confirmBattlefieldEntry"},
+    {text = "Glyph Placement", variable = "glyphPlacement"},
+    {text = "Item Reforge", variable = "itemReforge"},
+    {text = "Loot Distribution", variable = "lootDistribution"},
+    {text = "Battlefield Entry", variable = "battlefieldEntry"},
     {text = "Delete Mail", variable = "deleteMailAutomatically"},
     {text = "Death", variable = "releaseSpirit"},
     {text = "Resurrect", variable = "acceptResurrect"},
-    {text = "acceptTrade", variable = "acceptTrade"},
-    {text = "Loot Bind", variable = "confirmLootBind"},
-    {text = "Equip Bind", variable = "confirmEquipBind"},
-    {text = "Use Bind", variable = "confirmUseBind"},
+    {text = "Accept Trade", variable = "acceptTrade"},
+    {text = "Loot Bind", variable = "lootBind"},
+    {text = "Equip Bind", variable = "equipBind"},
+    {text = "Use Bind", variable = "useBind"},
     {text = "Shared Quest", variable = "acceptSharedQuest"},
-    {text = "Enchant Bind", variable = "confirmEnchantBind"},
-    {text = "Replace Enchant", variable = "confirmReplaceEnchant"},
-    {text = "Leave Instance", variable = "confirmLeaveInstance"},
-    {text = "Leave Battlefield", variable = "confirmLeaveBattlefield"},
-    {text = "Surrender Arena", variable = "confirmSurrenderArena"}
+    {text = "Enchant Bind", variable = "enchantBind"},
+    {text = "Replace Enchant", variable = "replaceEnchant"},
+    {text = "Leave Instance", variable = "leaveInstance"},
+    {text = "Leave Battlefield", variable = "leaveBattlefield"},
+    {text = "Surrender Arena", variable = "surrenderArena"}
 }
 
 for i, buttonInfo in ipairs(checkButtons) do
