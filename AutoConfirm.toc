@@ -5,5 +5,5 @@
 ## Version: 1.0
 ## SavedVariables: AutoConfirmationSettings
 
-# Core.lua
-# Options.lua
+Core.lua
+Options.lua
