@@ -70,7 +70,12 @@ local function PopupHook(which)
     elseif which == "CONFIRM_LOOT_DISTRIBUTION" and AutoConfirmationSettings.lootDistribution then
         StaticPopup1Button1:Click()
     elseif which == "CONFIRM_BATTLEFIELD_ENTRY" and AutoConfirmationSettings.battlefieldEntry then
-        StaticPopup1Button1:Click()
+        for i = 1, MAX_BATTLEFIELD_QUEUES do
+            local status = GetBattlefieldStatus(i)
+            if status == "confirm" then
+                AcceptBattlefieldPort(i, true)
+            end
+        end
     elseif which == "DELETE_MAIL" and AutoConfirmationSettings.deleteMailAutomatically then
         StaticPopup1Button1:Click()
     elseif which == "DEATH" and AutoConfirmationSettings.releaseSpirit then

@@ -45,6 +45,10 @@ local title = AutoConfirmPanel:CreateFontString(nil, "ARTWORK", "GameFontNormalL
 title:SetPoint("TOP", AutoConfirmPanel, 0, -16)
 title:SetText("Auto Confirmations")
 
+local closeButton = CreateFrame("Button", nil, AutoConfirmPanel, "UIPanelCloseButton")
+closeButton:SetPoint("TOPRIGHT", AutoConfirmPanel, -4, -4)
+closeButton:SetScript("OnClick", function() AutoConfirmPanel:Hide() end)
+
 
 local function CreateCheckButton(parent, yOffset, text, variable)
     local button = CreateFrame("CheckButton", nil, parent, "OptionsCheckButtonTemplate")
