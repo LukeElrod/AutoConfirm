@@ -1,3 +1,22 @@
+local checkButtons = {
+    { text = "Abandon Quest",     variable = "abandonQuest" },
+    { text = "Loot Roll",         variable = "lootRoll" },
+    { text = "Auto Type Delete",  variable = "autoDeleteItem" },
+    { text = "Distribute Loot", variable = "lootDistribution" },
+    { text = "Enter Battleground", variable = "battlefieldEntry" },
+    { text = "Delete Mail",       variable = "deleteMailAutomatically" },
+    { text = "Release Spirit",    variable = "releaseSpirit" },
+    { text = "Resurrect",         variable = "acceptResurrect" },
+    { text = "Loot Bind",         variable = "lootBind" },
+    { text = "Equip Bind",        variable = "equipBind" },
+    { text = "Use Bind",          variable = "useBind" },
+    { text = "Shared Quest",      variable = "acceptSharedQuest" },
+    { text = "Enchant Bind",      variable = "enchantBind" },
+    { text = "Replace Enchant",   variable = "replaceEnchant" },
+    { text = "Surrender Arena",   variable = "surrenderArena" },
+    { text = "Delete Item - CAUTION",       variable = "deleteItem" },
+}
+
 local AutoConfirmPanel = CreateFrame("Frame", "AutoConfirmPanel", UIParent)
 AutoConfirmPanel:SetWidth(300)
 AutoConfirmPanel:SetHeight(400)
@@ -13,34 +32,23 @@ AutoConfirmPanel:SetBackdrop({
 AutoConfirmPanel:SetBackdropColor(0, 0, 0, 1)
 AutoConfirmPanel:Hide()
 
+local scrollFrame = CreateFrame("ScrollFrame", "AutoConfirmScrollFrame", AutoConfirmPanel, "UIPanelScrollFrameTemplate")
+scrollFrame:SetPoint("TOPLEFT", AutoConfirmPanel, 8, -40)
+scrollFrame:SetPoint("BOTTOMRIGHT", AutoConfirmPanel, -30, 10)
+
+local content = CreateFrame("Frame", nil, scrollFrame)
+content:SetWidth(240)
+content:SetHeight(28 * table.getn(checkButtons) + 20)
+scrollFrame:SetScrollChild(content)
+
 local title = AutoConfirmPanel:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
 title:SetPoint("TOP", AutoConfirmPanel, 0, -16)
 title:SetText("Auto Confirmations")
 
-local checkButtons = {
-    { text = "Abandon Quest",     variable = "abandonQuest" },
-    { text = "Loot Roll",         variable = "lootRoll" },
-    { text = "Auto Type Delete",  variable = "autoDeleteItem" },
-    { text = "Loot Distribution", variable = "lootDistribution" },
-    { text = "Battlefield Entry", variable = "battlefieldEntry" },
-    { text = "Delete Mail",       variable = "deleteMailAutomatically" },
-    { text = "Death",             variable = "releaseSpirit" },
-    { text = "Resurrect",         variable = "acceptResurrect" },
-    { text = "Accept Trade",      variable = "acceptTrade" },
-    { text = "Loot Bind",         variable = "lootBind" },
-    { text = "Equip Bind",        variable = "equipBind" },
-    { text = "Use Bind",          variable = "useBind" },
-    { text = "Shared Quest",      variable = "acceptSharedQuest" },
-    { text = "Enchant Bind",      variable = "enchantBind" },
-    { text = "Replace Enchant",   variable = "replaceEnchant" },
-    { text = "Leave Instance",    variable = "leaveInstance" },
-    { text = "Leave Battlefield", variable = "leaveBattlefield" },
-    { text = "Surrender Arena",   variable = "surrenderArena" }
-}
 
 local function CreateCheckButton(parent, yOffset, text, variable)
     local button = CreateFrame("CheckButton", nil, parent, "OptionsCheckButtonTemplate")
-    button:SetPoint("TOPLEFT", parent, 16, yOffset)
+    button:SetPoint("TOPLEFT", parent, 0, yOffset)
     button:SetWidth(24)
     button:SetHeight(24)
     button.text = button:CreateFontString(nil, "ARTWORK", "GameFontNormal")
@@ -53,8 +61,8 @@ local function CreateCheckButton(parent, yOffset, text, variable)
 end
 
 for i, buttonInfo in ipairs(checkButtons) do
-    local yOffset = -40 - 28 * (i - 1)
-    buttonInfo.button = CreateCheckButton(AutoConfirmPanel, yOffset, buttonInfo.text, buttonInfo.variable)
+    local yOffset = -10 - 28 * (i - 1)
+    buttonInfo.button = CreateCheckButton(content, yOffset, buttonInfo.text, buttonInfo.variable)
 end
 
 local function InitOptions()

@@ -1,4 +1,4 @@
-AutoConfirmationSettings = AutoConfirmationSettings or {
+AutoConfirmationSettings = {
     abandonQuest = false,
     lootRoll = false,
     autoDeleteItem = false,
@@ -7,16 +7,14 @@ AutoConfirmationSettings = AutoConfirmationSettings or {
     deleteMailAutomatically = false,
     releaseSpirit = false,
     acceptResurrect = false,
-    acceptTrade = false,
     lootBind = false,
     equipBind = false,
     useBind = false,
     acceptSharedQuest = false,
     enchantBind = false,
     replaceEnchant = false,
-    leaveInstance = false,
-    leaveBattlefield = false,
-    surrenderArena = false
+    surrenderArena = false,
+    deleteItem = false
 }
 
 --ensure this loads properly
@@ -31,16 +29,14 @@ local function OnVariablesLoaded()
             deleteMailAutomatically = false,
             releaseSpirit = false,
             acceptResurrect = false,
-            acceptTrade = false,
             lootBind = false,
             equipBind = false,
             useBind = false,
             acceptSharedQuest = false,
             enchantBind = false,
             replaceEnchant = false,
-            leaveInstance = false,
-            leaveBattlefield = false,
-            surrenderArena = false
+            surrenderArena = false,
+            deleteItem = false
         }
     end
 end
@@ -63,6 +59,8 @@ function dumpTable(tbl, indent)
 end
 
 local function PopupHook(which)
+    --debug
+    print(which)
     if (which == "ABANDON_QUEST" or which == "ABANDON_QUEST_WITH_ITEMS") and AutoConfirmationSettings.abandonQuest then
         StaticPopup1Button1:Click()
     elseif which == "CONFIRM_LOOT_ROLL" and AutoConfirmationSettings.lootRoll then
@@ -79,8 +77,6 @@ local function PopupHook(which)
         StaticPopup1Button1:Click()
     elseif which == "RESURRECT" and AutoConfirmationSettings.acceptResurrect then
         StaticPopup1Button1:Click()
-    elseif which == "acceptTrade" and AutoConfirmationSettings.acceptTrade then
-        StaticPopup1Button1:Click()
     elseif which == "LOOT_BIND" and AutoConfirmationSettings.lootBind then
         StaticPopup1Button1:Click()
     elseif which == "EQUIP_BIND" and AutoConfirmationSettings.equipBind then
@@ -93,11 +89,9 @@ local function PopupHook(which)
         StaticPopup1Button1:Click()
     elseif which == "REPLACE_ENCHANT" and AutoConfirmationSettings.replaceEnchant then
         StaticPopup1Button1:Click()
-    elseif which == "CONFIRM_LEAVE_INSTANCE_PARTY" and AutoConfirmationSettings.leaveInstance then
-        StaticPopup1Button1:Click()
-    elseif which == "CONFIRM_LEAVE_BATTLEFIELD" and AutoConfirmationSettings.leaveBattlefield then
-        StaticPopup1Button1:Click()
     elseif which == "CONFIRM_SURRENDER_ARENA" and AutoConfirmationSettings.surrenderArena then
+        StaticPopup1Button1:Click()
+    elseif which == "DELETE_ITEM" and AutoConfirmationSettings.deleteItem then
         StaticPopup1Button1:Click()
     end
 end
