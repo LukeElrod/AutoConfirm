@@ -60,7 +60,7 @@ end
 
 local function PopupHook(which)
     --debug
-    print(which)
+    --print(which)
     if (which == "ABANDON_QUEST" or which == "ABANDON_QUEST_WITH_ITEMS") and AutoConfirmationSettings.abandonQuest then
         StaticPopup1Button1:Click()
     elseif which == "CONFIRM_LOOT_ROLL" and AutoConfirmationSettings.lootRoll then
