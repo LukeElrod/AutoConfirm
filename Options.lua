@@ -10,7 +10,6 @@ local checkButtons = {
     { text = "Equip Bind",            variable = "equipBind" },
     { text = "Use Bind",              variable = "useBind" },
     { text = "Shared Quest",          variable = "acceptSharedQuest" },
-    { text = "Enchant Bind",          variable = "enchantBind" },
     { text = "Replace Enchant",       variable = "replaceEnchant" },
     { text = "Delete Item - CAUTION", variable = "deleteItem" },
 }

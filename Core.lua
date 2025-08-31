@@ -10,7 +10,6 @@ AutoConfirmationSettings = {
     equipBind = false,
     useBind = false,
     acceptSharedQuest = false,
-    enchantBind = false,
     replaceEnchant = false,
     deleteItem = false
 }
@@ -30,7 +29,6 @@ local function OnVariablesLoaded()
             equipBind = false,
             useBind = false,
             acceptSharedQuest = false,
-            enchantBind = false,
             replaceEnchant = false,
             deleteItem = false
         }
@@ -56,7 +54,7 @@ end
 
 local function PopupHook(which)
     --debug
-    --print(which)
+    print(which)
     if (which == "ABANDON_QUEST" or which == "ABANDON_QUEST_WITH_ITEMS") and AutoConfirmationSettings.abandonQuest then
         StaticPopup1Button1:Click()
     elseif which == "CONFIRM_LOOT_ROLL" and AutoConfirmationSettings.lootRoll then
@@ -78,14 +76,12 @@ local function PopupHook(which)
         StaticPopup1Button1:Click()
     elseif which == "LOOT_BIND" and AutoConfirmationSettings.lootBind then
         StaticPopup1Button1:Click()
-    elseif which == "EQUIP_BIND" and AutoConfirmationSettings.equipBind then
-        StaticPopup1Button1:Click()
+    elseif (which == "EQUIP_BIND" or which == "AUTOEQUIP_BIND") and AutoConfirmationSettings.equipBind then
+        EquipPendingItem(this:GetID())
     elseif which == "USE_BIND" and AutoConfirmationSettings.useBind then
-        StaticPopup1Button1:Click()
+        ConfirmBindOnUse()
     elseif which == "QUEST_ACCEPT" and AutoConfirmationSettings.acceptSharedQuest then
-        StaticPopup1Button1:Click()
-    elseif which == "BIND_ENCHANT" and AutoConfirmationSettings.enchantBind then
-        StaticPopup1Button1:Click()
+        ConfirmAcceptQuest()
     elseif which == "REPLACE_ENCHANT" and AutoConfirmationSettings.replaceEnchant then
         StaticPopup1Button1:Click()
     elseif which == "DELETE_ITEM" and AutoConfirmationSettings.deleteItem then
