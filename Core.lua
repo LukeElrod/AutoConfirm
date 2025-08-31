@@ -12,7 +12,6 @@ AutoConfirmationSettings = {
     acceptSharedQuest = false,
     enchantBind = false,
     replaceEnchant = false,
-    surrenderArena = false,
     deleteItem = false
 }
 
@@ -33,7 +32,6 @@ local function OnVariablesLoaded()
             acceptSharedQuest = false,
             enchantBind = false,
             replaceEnchant = false,
-            surrenderArena = false,
             deleteItem = false
         }
     end
@@ -89,8 +87,6 @@ local function PopupHook(which)
     elseif which == "BIND_ENCHANT" and AutoConfirmationSettings.enchantBind then
         StaticPopup1Button1:Click()
     elseif which == "REPLACE_ENCHANT" and AutoConfirmationSettings.replaceEnchant then
-        StaticPopup1Button1:Click()
-    elseif which == "CONFIRM_SURRENDER_ARENA" and AutoConfirmationSettings.surrenderArena then
         StaticPopup1Button1:Click()
     elseif which == "DELETE_ITEM" and AutoConfirmationSettings.deleteItem then
         StaticPopup1Button1:Click()

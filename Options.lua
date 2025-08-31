@@ -12,7 +12,6 @@ local checkButtons = {
     { text = "Shared Quest",          variable = "acceptSharedQuest" },
     { text = "Enchant Bind",          variable = "enchantBind" },
     { text = "Replace Enchant",       variable = "replaceEnchant" },
-    { text = "Surrender Arena",       variable = "surrenderArena" },
     { text = "Delete Item - CAUTION", variable = "deleteItem" },
 }
 
