@@ -4,7 +4,6 @@ AutoConfirmationSettings = {
     autoDeleteItem = false,
     lootDistribution = false,
     battlefieldEntry = false,
-    deleteMailAutomatically = false,
     releaseSpirit = false,
     acceptResurrect = false,
     lootBind = false,
@@ -26,7 +25,6 @@ local function OnVariablesLoaded()
             autoDeleteItem = false,
             lootDistribution = false,
             battlefieldEntry = false,
-            deleteMailAutomatically = false,
             releaseSpirit = false,
             acceptResurrect = false,
             lootBind = false,
@@ -76,8 +74,6 @@ local function PopupHook(which)
                 AcceptBattlefieldPort(i, true)
             end
         end
-    elseif which == "DELETE_MAIL" and AutoConfirmationSettings.deleteMailAutomatically then
-        StaticPopup1Button1:Click()
     elseif which == "DEATH" and AutoConfirmationSettings.releaseSpirit then
         StaticPopup1Button1:Click()
     elseif which == "RESURRECT" and AutoConfirmationSettings.acceptResurrect then
