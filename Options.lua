@@ -10,8 +10,13 @@ local checkButtons = {
     { text = "Equip Bind",            variable = "equipBind" },
     { text = "Use Bind",              variable = "useBind" },
     { text = "Shared Quest",          variable = "acceptSharedQuest" },
+    { text = "Enchant Bind",          variable = "enchantBind" },
     { text = "Replace Enchant",       variable = "replaceEnchant" },
     { text = "Delete Item - CAUTION", variable = "deleteItem" },
+    { text = "Replace Trade Enchant", variable = "replaceTradeEnchant" },
+    { text = "Summon",                variable = "summon" },
+    { text = "Hearthstone Bind",      variable = "bindHearthstone" },
+    { text = "Reset Instances",       variable = "resetInstances" },
 }
 
 local AutoConfirmPanel = CreateFrame("Frame", "AutoConfirmPanel", UIParent)

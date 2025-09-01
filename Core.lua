@@ -11,7 +11,14 @@ AutoConfirmationSettings = {
     useBind = false,
     acceptSharedQuest = false,
     replaceEnchant = false,
-    deleteItem = false
+    deleteItem = false,
+    bindEnchant = false,
+    replaceTradeEnchant = false,
+    summon = false,
+    bindHearthstone = false,
+    resetInstances = false,
+    --TODO
+    readyCheck = false,
 }
 
 --ensure this loads properly
@@ -30,7 +37,14 @@ local function OnVariablesLoaded()
             useBind = false,
             acceptSharedQuest = false,
             replaceEnchant = false,
-            deleteItem = false
+            deleteItem = false,
+            bindEnchant = false,
+            replaceTradeEnchant = false,
+            summon = false,
+            bindHearthstone = false,
+            resetInstances = false,
+            --TODO
+            readyCheck = false,
         }
     end
 end
@@ -84,8 +98,18 @@ local function PopupHook(which)
         ConfirmAcceptQuest()
     elseif which == "REPLACE_ENCHANT" and AutoConfirmationSettings.replaceEnchant then
         StaticPopup1Button1:Click()
+    elseif which == "BIND_ENCHANT" and AutoConfirmationSettings.bindEnchant then
+        BindEnchant()
     elseif which == "DELETE_ITEM" and AutoConfirmationSettings.deleteItem then
         StaticPopup1Button1:Click()
+    elseif which == "TRADE_REPLACE_ENCHANT" and AutoConfirmationSettings.replaceTradeEnchant then
+        ReplaceTradeEnchant()
+    elseif which == "CONFIRM_SUMMON" and AutoConfirmationSettings.summon then
+        ConfirmSummon()
+    elseif which == "CONFIRM_BINDER" and AutoConfirmationSettings.bindHearthstone then
+        ConfirmBinder()
+    elseif which == "CONFIRM_RESET_INSTANCES" and AutoConfirmationSettings.resetInstances then
+        ResetInstances()
     end
 end
 
