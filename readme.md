@@ -2,7 +2,7 @@
 
 ## Overview
 
-AutoConfirm is a World of Warcraft addon that automates confirmations for common popups, including abandoning quests, replacing enchantments, and rolling on bind-on-pickup loot. It helps streamline gameplay by reducing repetitive clicks.
+AutoConfirm is a World of Warcraft addon that automates confirmations for common popups, including accepting quests, completing quests, abandoning quests, replacing enchantments, and rolling on bind-on-pickup loot. It helps streamline gameplay by reducing repetitive clicks.
 
 ## Installation
 
