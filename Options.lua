@@ -1,11 +1,13 @@
 local checkButtons = {
+    { text = "Accept Quest",          variable = "acceptQuest" },
+    { text = "Complete Quest",        variable = "completeQuest" },
     { text = "Abandon Quest",         variable = "abandonQuest" },
     { text = "Loot Roll",             variable = "lootRoll" },
     { text = "Auto Type Delete",      variable = "autoDeleteItem" },
     { text = "Distribute Loot",       variable = "lootDistribution" },
     { text = "Enter Battleground",    variable = "battlefieldEntry" },
     { text = "Release Spirit",        variable = "releaseSpirit" },
-    { text = "Resurrect",             variable = "acceptResurrect" },
+    { text = "Accept Resurrect",      variable = "acceptResurrect" },
     { text = "Loot Bind",             variable = "lootBind" },
     { text = "Equip Bind",            variable = "equipBind" },
     { text = "Use Bind",              variable = "useBind" },
@@ -14,7 +16,7 @@ local checkButtons = {
     { text = "Replace Enchant",       variable = "replaceEnchant" },
     { text = "Delete Item - CAUTION", variable = "deleteItem" },
     { text = "Replace Trade Enchant", variable = "replaceTradeEnchant" },
-    { text = "Summon",                variable = "summon" },
+    { text = "Accept Summon",         variable = "summon" },
     { text = "Hearthstone Bind",      variable = "bindHearthstone" },
     { text = "Reset Instances",       variable = "resetInstances" },
 }

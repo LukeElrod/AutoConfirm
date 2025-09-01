@@ -1,4 +1,6 @@
 AutoConfirmationSettings = {
+    acceptQuest = false,
+    completeQuest = false,
     abandonQuest = false,
     lootRoll = false,
     autoDeleteItem = false,
@@ -25,6 +27,8 @@ AutoConfirmationSettings = {
 local function OnVariablesLoaded()
     if not AutoConfirmationSettings then
         AutoConfirmationSettings = {
+            acceptQuest = false,
+            completeQuest = false,
             abandonQuest = false,
             lootRoll = false,
             autoDeleteItem = false,
@@ -49,23 +53,6 @@ local function OnVariablesLoaded()
     end
 end
 
-local f = CreateFrame("Frame")
-f:RegisterEvent("VARIABLES_LOADED")
-f:SetScript("OnEvent", OnVariablesLoaded)
-
-function dumpTable(tbl, indent)
-    indent = indent or 0
-    local prefix = string.rep("  ", indent)
-    for k, v in pairs(tbl) do
-        if type(v) == "table" then
-            print(prefix .. tostring(k) .. ":")
-            dumpTable(v, indent + 1)
-        else
-            print(prefix .. tostring(k) .. ": " .. tostring(v))
-        end
-    end
-end
-
 local function PopupHook(which)
     --debug
     print(which)
@@ -87,7 +74,7 @@ local function PopupHook(which)
     elseif which == "DEATH" and AutoConfirmationSettings.releaseSpirit then
         StaticPopup1Button1:Click()
     elseif which == "RESURRECT" and AutoConfirmationSettings.acceptResurrect then
-        StaticPopup1Button1:Click()
+        AcceptResurrect()
     elseif which == "LOOT_BIND" and AutoConfirmationSettings.lootBind then
         StaticPopup1Button1:Click()
     elseif (which == "EQUIP_BIND" or which == "AUTOEQUIP_BIND") and AutoConfirmationSettings.equipBind then
@@ -107,9 +94,9 @@ local function PopupHook(which)
     elseif which == "CONFIRM_SUMMON" and AutoConfirmationSettings.summon then
         ConfirmSummon()
     elseif which == "CONFIRM_BINDER" and AutoConfirmationSettings.bindHearthstone then
-        ConfirmBinder()
+        StaticPopup1Button1:Click()
     elseif which == "CONFIRM_RESET_INSTANCES" and AutoConfirmationSettings.resetInstances then
-        ResetInstances()
+        StaticPopup1Button1:Click()
     end
 end
 
@@ -117,4 +104,31 @@ local orig_StaticPopup_OnShow = StaticPopup_OnShow
 function StaticPopup_OnShow()
     PopupHook(this.which)
     orig_StaticPopup_OnShow()
+end
+
+local f = CreateFrame("Frame")
+f:RegisterEvent("VARIABLES_LOADED")
+f:RegisterEvent("QUEST_DETAIL")
+f:RegisterEvent("QUEST_COMPLETE")
+f:SetScript("OnEvent", function()
+    if event == "VARIABLES_LOADED" then
+        OnVariablesLoaded()
+    elseif event == "QUEST_DETAIL" and AutoConfirmationSettings.acceptQuest then
+        AcceptQuest()
+    elseif event == "QUEST_COMPLETE" and AutoConfirmationSettings.completeQuest then
+        CompleteQuest()
+    end
+end)
+
+function dumpTable(tbl, indent)
+    indent = indent or 0
+    local prefix = string.rep("  ", indent)
+    for k, v in pairs(tbl) do
+        if type(v) == "table" then
+            print(prefix .. tostring(k) .. ":")
+            dumpTable(v, indent + 1)
+        else
+            print(prefix .. tostring(k) .. ": " .. tostring(v))
+        end
+    end
 end
