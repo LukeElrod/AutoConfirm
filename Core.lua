@@ -55,7 +55,8 @@ local function PopupHook(which)
     if (which == "ABANDON_QUEST" or which == "ABANDON_QUEST_WITH_ITEMS") and AutoConfirmationSettings.abandonQuest then
         StaticPopup1Button1:Click()
     elseif which == "CONFIRM_LOOT_ROLL" and AutoConfirmationSettings.lootRoll then
-        StaticPopup1Button1:Click()
+        ConfirmLootRoll(arg1, arg2)
+        StaticPopup1:Hide()
     elseif which == "DELETE_GOOD_ITEM" and AutoConfirmationSettings.autoDeleteItem then
         StaticPopup1EditBox:SetText("delete")
     elseif which == "CONFIRM_LOOT_DISTRIBUTION" and AutoConfirmationSettings.lootDistribution then
@@ -69,7 +70,7 @@ local function PopupHook(which)
         end
     elseif which == "DEATH" and AutoConfirmationSettings.releaseSpirit then
         StaticPopup1Button1:Click()
-    elseif which == "RESURRECT" and AutoConfirmationSettings.acceptResurrect then
+    elseif which == "RESURRECT_NO_SICKNESS" and AutoConfirmationSettings.acceptResurrect then
         AcceptResurrect()
     elseif which == "LOOT_BIND" and AutoConfirmationSettings.lootBind then
         StaticPopup1Button1:Click()
