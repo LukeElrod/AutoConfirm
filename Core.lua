@@ -19,6 +19,7 @@ AutoConfirmationSettings = {
     summon = false,
     bindHearthstone = false,
     resetInstances = false,
+    partyInvite = false
 }
 
 --ensure this loads properly
@@ -45,6 +46,7 @@ local function OnVariablesLoaded()
             summon = false,
             bindHearthstone = false,
             resetInstances = false,
+            partyInvite = false
         }
     end
 end
@@ -93,6 +95,8 @@ local function PopupHook(which)
     elseif which == "CONFIRM_BINDER" and AutoConfirmationSettings.bindHearthstone then
         StaticPopup1Button1:Click()
     elseif which == "CONFIRM_RESET_INSTANCES" and AutoConfirmationSettings.resetInstances then
+        StaticPopup1Button1:Click()
+    elseif which == "PARTY_INVITE" and AutoConfirmationSettings.partyInvite then
         StaticPopup1Button1:Click()
     end
 end
