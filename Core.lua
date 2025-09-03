@@ -111,6 +111,7 @@ local f = CreateFrame("Frame")
 f:RegisterEvent("VARIABLES_LOADED")
 f:RegisterEvent("QUEST_DETAIL")
 f:RegisterEvent("QUEST_COMPLETE")
+f:RegisterEvent("QUEST_PROGRESS")
 f:SetScript("OnEvent", function()
     if event == "VARIABLES_LOADED" then
         OnVariablesLoaded()
@@ -118,6 +119,8 @@ f:SetScript("OnEvent", function()
         AcceptQuest()
     elseif event == "QUEST_COMPLETE" and AutoConfirmationSettings.completeQuest then
         GetQuestReward()
+    elseif event == "QUEST_PROGRESS" and AutoConfirmationSettings.completeQuest then
+        CompleteQuest()
     end
 end)
 
