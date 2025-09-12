@@ -119,6 +119,9 @@ f:SetScript("OnEvent", function()
     elseif event == "QUEST_DETAIL" and AutoConfirmationSettings.acceptQuest then
         AcceptQuest()
     elseif event == "QUEST_COMPLETE" and AutoConfirmationSettings.completeQuest then
+        if GetNumQuestChoices() > 1 then
+            return
+        end
         GetQuestReward()
     elseif event == "QUEST_PROGRESS" and AutoConfirmationSettings.completeQuest then
         CompleteQuest()

@@ -2,7 +2,7 @@
 ## Title: Auto Confirm
 ## Notes: Auto-confirm QOL Addon.
 ## Author: Luke E
-## Version: 1.0
+## Version: 1.0.1
 ## SavedVariables: AutoConfirmationSettings
 
 Core.lua
