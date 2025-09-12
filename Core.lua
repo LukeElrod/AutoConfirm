@@ -19,7 +19,10 @@ AutoConfirmationSettings = {
     summon = false,
     bindHearthstone = false,
     resetInstances = false,
-    partyInvite = false
+    partyInvite = false,
+    declinePartyInvite = false,
+    declineGuildInvite = false,
+    antiAfk = false
 }
 
 --ensure this loads properly
@@ -46,7 +49,10 @@ local function OnVariablesLoaded()
             summon = false,
             bindHearthstone = false,
             resetInstances = false,
-            partyInvite = false
+            partyInvite = false,
+            declinePartyInvite = false,
+            declineGuildInvite = false,
+            antiAfk = false
         }
     end
 end
@@ -98,6 +104,12 @@ local function PopupHook(which)
     elseif which == "CONFIRM_RESET_INSTANCES" and AutoConfirmationSettings.resetInstances then
         StaticPopup1Button1:Click()
     elseif which == "PARTY_INVITE" and AutoConfirmationSettings.partyInvite then
+        StaticPopup1Button1:Click()
+    elseif which == "PARTY_INVITE" and AutoConfirmationSettings.declinePartyInvite then
+        StaticPopup1Button2:Click()
+    elseif which == "GUILD_INVITE" and AutoConfirmationSettings.declineGuildInvite then
+        StaticPopup1Button2:Click()
+    elseif which == "CAMP" and AutoConfirmationSettings.antiAfk then
         StaticPopup1Button1:Click()
     end
 end
