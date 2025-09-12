@@ -3,7 +3,7 @@ AutoConfirmationSettings = {
     completeQuest = false,
     abandonQuest = false,
     lootRoll = false,
-    autoDeleteItem = false,
+    typeDelete = false,
     lootDistribution = false,
     battlefieldEntry = false,
     releaseSpirit = false,
@@ -30,7 +30,7 @@ local function OnVariablesLoaded()
             completeQuest = false,
             abandonQuest = false,
             lootRoll = false,
-            autoDeleteItem = false,
+            typeDelete = false,
             lootDistribution = false,
             battlefieldEntry = false,
             releaseSpirit = false,
@@ -59,7 +59,7 @@ local function PopupHook(which)
     elseif which == "CONFIRM_LOOT_ROLL" and AutoConfirmationSettings.lootRoll then
         ConfirmLootRoll(arg1, arg2)
         StaticPopup1:Hide()
-    elseif which == "DELETE_GOOD_ITEM" and AutoConfirmationSettings.autoDeleteItem then
+    elseif which == "DELETE_GOOD_ITEM" and AutoConfirmationSettings.typeDelete then
         StaticPopup1EditBox:SetText("delete")
     elseif which == "CONFIRM_LOOT_DISTRIBUTION" and AutoConfirmationSettings.lootDistribution then
         StaticPopup1Button1:Click()
@@ -75,7 +75,8 @@ local function PopupHook(which)
     elseif which == "RESURRECT_NO_SICKNESS" and AutoConfirmationSettings.acceptResurrect then
         AcceptResurrect()
     elseif which == "LOOT_BIND" and AutoConfirmationSettings.lootBind then
-        StaticPopup1Button1:Click()
+        LootSlot(arg1)
+        StaticPopup1:Hide()
     elseif (which == "EQUIP_BIND" or which == "AUTOEQUIP_BIND") and AutoConfirmationSettings.equipBind then
         EquipPendingItem(this:GetID())
     elseif which == "USE_BIND" and AutoConfirmationSettings.useBind then

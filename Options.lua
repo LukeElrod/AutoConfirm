@@ -6,7 +6,7 @@ local checkButtons = {
     { text = "Bind on Pickup - Loot", variable = "lootBind" },
     { text = "Bind on Equip",         variable = "equipBind" },
     { text = "Bind on Use",           variable = "useBind" },
-    { text = "Auto Type Delete",      variable = "autoDeleteItem" },
+    { text = "Auto Type Delete",      variable = "typeDelete" },
     { text = "Enter Battleground",    variable = "battlefieldEntry" },
     { text = "Accept Party Invite",   variable = "partyInvite" },
     { text = "Release Spirit",        variable = "releaseSpirit" },
