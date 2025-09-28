@@ -22,7 +22,10 @@ AutoConfirmationSettings = {
     partyInvite = false,
     declinePartyInvite = false,
     declineGuildInvite = false,
-    antiAfk = false
+    antiAfk = false,
+    autoGreed = false,
+    autoNeed = false,
+    autoPass = false,
 }
 
 --ensure this loads properly
@@ -52,7 +55,10 @@ local function OnVariablesLoaded()
             partyInvite = false,
             declinePartyInvite = false,
             declineGuildInvite = false,
-            antiAfk = false
+            antiAfk = false,
+            autoGreed = false,
+            autoNeed = false,
+            autoPass = false,
         }
     end
 end
@@ -125,6 +131,7 @@ f:RegisterEvent("VARIABLES_LOADED")
 f:RegisterEvent("QUEST_DETAIL")
 f:RegisterEvent("QUEST_COMPLETE")
 f:RegisterEvent("QUEST_PROGRESS")
+f:RegisterEvent("START_LOOT_ROLL")
 f:SetScript("OnEvent", function()
     if event == "VARIABLES_LOADED" then
         OnVariablesLoaded()
@@ -137,6 +144,12 @@ f:SetScript("OnEvent", function()
         GetQuestReward()
     elseif event == "QUEST_PROGRESS" and AutoConfirmationSettings.completeQuest then
         CompleteQuest()
+    elseif event == "START_LOOT_ROLL" and AutoConfirmationSettings.autoPass then
+        RollOnLoot(arg1, 0)
+    elseif event == "START_LOOT_ROLL" and AutoConfirmationSettings.autoNeed then
+        RollOnLoot(arg1, 1)
+    elseif event == "START_LOOT_ROLL" and AutoConfirmationSettings.autoGreed then
+        RollOnLoot(arg1, 2)
     end
 end)
 

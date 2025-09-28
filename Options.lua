@@ -1,28 +1,44 @@
 local checkButtons = {
+    -- Quest actions
     { text = "Accept Quest",             variable = "acceptQuest" },
     { text = "Complete Quest",           variable = "completeQuest" },
     { text = "Abandon Quest",            variable = "abandonQuest" },
+    { text = "Start Group Quest",        variable = "acceptSharedQuest" },
+
+    -- Party/Guild actions
+    { text = "Accept Party Invite",      variable = "partyInvite" },
+    { text = "Decline Party Invite",     variable = "declinePartyInvite" },
+    { text = "Accept Summon",            variable = "summon" },
+    { text = "Accept Resurrect",         variable = "acceptResurrect" },
+    { text = "Decline Guild Invite",     variable = "declineGuildInvite" },
+
+    -- Loot actions
     { text = "Bind on Pickup - Roll",    variable = "lootRoll" },
     { text = "Bind on Pickup - Loot",    variable = "lootBind" },
     { text = "Bind on Equip",            variable = "equipBind" },
     { text = "Bind on Use",              variable = "useBind" },
-    { text = "Auto Type Delete",         variable = "typeDelete" },
-    { text = "Enter Battleground",       variable = "battlefieldEntry" },
-    { text = "Accept Party Invite",      variable = "partyInvite" },
-    { text = "Decline Party Invite",     variable = "declinePartyInvite" },
-    { text = "Release Spirit",           variable = "releaseSpirit" },
-    { text = "Accept Resurrect",         variable = "acceptResurrect" },
-    { text = "Start Group Quest",        variable = "acceptSharedQuest" },
+    { text = "Auto Greed",               variable = "autoGreed" },
+    { text = "Auto Need",                variable = "autoNeed" },
+    { text = "Auto Pass",                variable = "autoPass" },
+    { text = "Distribute Loot",          variable = "lootDistribution" },
+
+    -- Enchant actions
     { text = "Enchant Bind",             variable = "enchantBind" },
     { text = "Replace Enchant",          variable = "replaceEnchant" },
     { text = "Replace Trade Enchant",    variable = "replaceTradeEnchant" },
-    { text = "Accept Summon",            variable = "summon" },
-    { text = "Hearthstone Bind",         variable = "bindHearthstone" },
+
+    -- Battleground/Instance actions
+    { text = "Enter Battleground",       variable = "battlefieldEntry" },
     { text = "Reset Instances",          variable = "resetInstances" },
-    { text = "Distribute Loot",          variable = "lootDistribution" },
-    { text = "Delete Item - CAUTION",    variable = "deleteItem" },
-    { text = "Decline Guild Invite",     variable = "declineGuildInvite" },
+
+    -- Hearthstone/Spirit actions
+    { text = "Hearthstone Bind",         variable = "bindHearthstone" },
+    { text = "Release Spirit",           variable = "releaseSpirit" },
+
+    -- Misc
     { text = "Cancel Logout (Anti-AFK)", variable = "antiAfk" },
+    { text = "Auto Type Delete",         variable = "typeDelete" },
+    { text = "Delete Item - CAUTION",    variable = "deleteItem" },
 }
 
 local AutoConfirmPanel = CreateFrame("Frame", "AutoConfirmPanel", UIParent)
